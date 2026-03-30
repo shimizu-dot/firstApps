@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo リスト </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <header>
+        <div class="budget-row">
+            <div class="budget-block">
+                <label for="monthlyBudget">今月の予算</label>
+                <input id="monthlyBudget" type="number" min="0" step="1" placeholder="予算を入力" value="30000">
+                <span>円</span>
+            </div>
+            <div class="budget-block">出費予定: ￥<span id="plannedExpense">0</span></div>
+            <div class="budget-block">残金: ￥<span id="remainingBudget">30000</span></div>
+        </div>
+        <div class="clock-wrap">
+            <div class="datetime-wrap">
+                <div id="calendarDate" aria-label="カレンダー">0000-00-00</div>
+                <div id="digitalClock" aria-label="デジタル時計">00:00:00</div>
+            </div>
+            <div class="clock" aria-label="アナログ時計">
+                <div class="hand hour" id="hourHand"></div>
+                <div class="hand minute" id="minuteHand"></div>
+                <div class="hand second" id="secondHand"></div>
+                <div class="clock-center"></div>
+            </div>
+        </div>
+    </header>
+    <div id="pigeonStage" aria-hidden="true"></div>
+    <div id="fortuneResult" aria-live="polite"></div>
+    <div id="redFlash" aria-hidden="true"></div>
+    <main>
+        <section>
+            <div class="meta-row">
+                <span>種類</span>
+                <div class="type-switch">
+                    <label for="todoType">
+                        <input id="todoType" type="checkbox" checked>
+                        ToDo
+                    </label>
+                    <label for="shoppingType">
+                        <input id="shoppingType" type="checkbox">
+                        買物リスト
+                    </label>
+                    <label for="stockType">
+                        <input id="stockType" type="checkbox">
+                        備蓄リスト
+                    </label>
+                </div>
+            </div>
+            <div class="input-row">
+                <input id="task" placeholder="やることを入力">
+                <button id="addBtn">追加</button>
+            </div>
+            <div class="meta-row" id="todoFields">
+                <label for="deadline">期限</label>
+                <input id="deadline" type="date">
+            </div>
+            <div class="meta-row" id="shoppingFields" style="display: none;">
+                <label for="amount">金額</label>
+                <input id="amount" type="number" min="0" step="1" placeholder="金額を入力">
+            </div>
+        </section>
+
+        <section>
+            <div class="list-columns">
+                <div class="list-box">
+                    <h2>ToDoリスト</h2>
+                    <ul id="todoList" class="item-list"></ul>
+                </div>
+                <div class="list-box">
+                    <h2>買物リスト</h2>
+                    <ul id="shoppingList" class="item-list"></ul>
+                </div>
+                <div class="list-box" id="stockBox">
+                    <h2>備蓄リスト</h2>
+                    <ul id="stockList" class="item-list"></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div id="trash">ここにドラッグして削除</div>
+        <button id="saveBtn" type="button">保存</button>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
